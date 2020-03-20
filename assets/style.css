@@ -424,6 +424,21 @@ hr {
 
 /*contact*/
 
+.contact-background{
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    background-color: rgb(255,255,255,0.6);
+    background-image: url(https://images.pexels.com/photos/569098/pexels-photo-569098.jpeg?cs=srgb&dl=analogique-appareil-photo-classique-concentrer-569098.jpg&fm=jpg);
+    background-repeat: no-repeat;
+}
+
+.contact{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .table{
     display: flex;
     align-items: center;
@@ -434,23 +449,6 @@ hr {
     background-color:#A3ACB5;
     opacity:0.8;
     width: 70%; 
-}
-
-.backform {
-	background-image: url(https://images.pexels.com/photos/569098/pexels-photo-569098.jpeg?cs=srgb&dl=analogique-appareil-photo-classique-concentrer-569098.jpg&fm=jpg);
-    background-repeat: no-repeat;
-}
-.contact{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.containeurform{
-    min-height: 100vh;
-    width: 100%;
-    margin: 0;
-    background-color: rgb(255,255,255,0.6);
 }
 
 .form-style-7 ul{
@@ -480,6 +478,7 @@ hr {
 	overflow: hidden;
 	
 }
+
 .form-style-7 input[type="text"],
 .form-style-7 input[type="date"],
 .form-style-7 input[type="datetime"],
@@ -532,29 +531,19 @@ hr {
 	color:black;
 }
 
-.sociaux{
-	display: flex;
-	justify-content: space-evenly;
-	width: 70%;
-	margin:auto;
-	padding: 20px; 
+.errors{
+    color: red;
+}
+.message_envoie{
+    margin-bottom: 2em;
 }
 
-.logo{transition:0.5s;}
-.logo:hover{transform : scale(1.2);}
-
-.form-style-7 li > span{
-	background:black;
-	display: block;
-    opacity: 0.6;
-    padding: 3px;
-	margin: 0 -9px -9px -9px;
-	text-align: center;
-	color: #C0C0C0;
-	font-size: 15px;
+.message_envoie p {
+    color:black;
+    text-align: center;
 }
 
-/*footer*/
+    /*footer*/
 
 footer {
     background-color:#86A69D;
@@ -642,22 +631,5 @@ footer a:hover{
 
 }
 
-.message{
-    background-color: #86A69D;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.message p{
-    color: white;
-    font-family: "Amatic SC", sans-serif;
-    font-size: 90px;
-}
-
-.message img{
-    width: 50%;
-    margin: 1em;
-
-}
 

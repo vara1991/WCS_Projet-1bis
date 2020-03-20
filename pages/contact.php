@@ -2,87 +2,103 @@
     include('../layouts/head.php');
 
     if(isset($_POST)) {
-        $errors = [];
-        $name = $_POST['name'];
-        $email = $_POST['email'];
 
+        $errors = [];
+
+        if (empty($_POST['name'])){
+            $errors['name'] ="Vous avez oublié votre nom";
+        }
         if (empty($_POST['email'])){
-            $errors['email'] = "Le champs email est obligatoire";
+            $errors['email'] ="Vous avez oublié votre email";
         }
         if (empty($_POST['message'])){
-            $errors['message'] = "Le champs message est obligatoire";
+            $errors['message'] ="Vous avez oublié votre message";
         }
-     }
+    }
 ?>
 
-    <main>
+<main class="contact-background">
 
-        <div class="containeurform backform">
+    <h2>Nous contacter</h2>
 
-            <h2>Nous contacter</h2>
+    <div class="contact" >
 
-            <div class="contact" >
-                <div class="table">
-                    <form class="form-style-7" action="contact.php" method="POST">
-                    <ul>
-                        <li>
-                            <label for="sexe">Sexe</label>
-                            <select name="sexe">
-                                <option>Femme</option>
-                                <option>Homme</option>
-                                <span>Votre sexe</span>
-                            </select>
-                        </li>
-                        <li>
-                            <label for="name" >Nom</label>
-                            <input type="text" name="name" maxlength="100" value=<?php if(isset($_POST['name'])) echo $_POST['name']?>>
-                            <span>Entrez votre nom complet ici</span>
-                        </li>
-                        <li>
-                            <label for="email">Email</label>
-                            <input type="email" name="email" maxlength="100" value=<?php if(isset($email)) echo $email?>>
-                            <span>Entrez votre adresse mail valide</span>
-                            <p class="error" >
-                                <code>
-                                    <?php if(isset($errors['email'])) echo $errors['email'] ?>
-                                </code>
-                            </p>
-                        </li>
+        <div class="table">
 
-                        <li>
-                            <label for="bio">Message</label required>
-                            <textarea name="message" onkeyup="adjust_textarea(this)"value=<?php if(isset($name)) echo $name?>></textarea>
-                            <span>Ecrivez votre message ici</span>
-                            <p class="error" >
-                                <code>
-                                    <?php if(isset($errors['message'])) echo $errors['message'] ?>
-                                </code>
-                            </p>
-                        </li>
-                        <li>
-                            <input type="submit" value="Envoyer" name="envoyer" >
-                        </li>
-                    </ul>
-                    </form>
+            <form class="form-style-7" action="contact.php" method="POST">
 
-                    <?php
-                        $to = 'varaponegaire.@gmail.com';
-                        $message = $_POST['message'];
-                        $message = $_POST['email'];
-                        $subject = 'Nouveau message';
-                        $content = "Le message a été envoyé par $email: $message";
-                        $headers = 'From: v.gaire@hotmail.fr';
+            <ul>
 
-                        mail($to, $subject, $content, $headers);
+                <li>
+                    <label for="select_sexe">Sexe</label>
+                    <select name="sexe" id="select_sexe">
+                        <option>Femme</option>
+                        <option>Homme</option>
+                    </select>
+                </li>
 
-                    ?>
+                <li>
+                    <label for="input_name" >Nom *</label>
+                    <input type="text" name="name" maxlength="100" id="input_name" value=<?php if(isset($_POST['name'])) echo $_POST['name']?>>
+                    <p class="errors">
+                        <code>
+                            <?php if(isset($errors['name'])) echo $errors['name']; ?>
+                        </code>
+                    </p>
+                </li>
 
+                <li>
+                    <label for="input_email">Email *</label>
+                    <input type="email" name="email" maxlength="100" id="input_email" value=<?php if(isset($_POST['email'])) echo $_POST['email']?>>
+                    <p class="errors">
+                        <code>
+                            <?php if(isset($errors['email'])) echo $errors['email']; ?>
+                        </code>
+                    </p>
+                </li>
 
+                <li>
+                    <label for="text_message">Message *</label required>
+                    <textarea name="message" onkeyup="adjust_textarea(this)" id="text_message"><?php if(isset($_POST['message'])) echo $_POST['message']?></textarea>
+                    <p class="errors">
+                        <code>
+                            <?php if(isset($errors['message'])) echo $errors['message']; ?>
+                        </code>
+                    </p>
+                </li>
 
+                <li>
+                    <button type="submit"name="envoyer" >envoyer</button>
+                </li>
+
+            </ul>
+
+            </form>
+
+            <?php
+                if(isset($_POST['envoyer'])) {
+            ?>
+                <div class="message_envoie">
+                    <p>Roquet Racoon vous remercie</p>
+                    <p><?php echo $_POST['name'];?></p>
+                    <p>pour votre message</p>
                 </div>
-            </div>
+
+                <?php
+                    $messageEnvoi = $_POST['message'];
+                    $headers = 'From : v.gaire@hotmail.fr';
+                    mail('varaponegaire@gmail.com', 'formulaire de contact', $messageEnvoi, $headers);
+                ?>
+
+             <?php
+                }
+             ?>
+
         </div>
-    </main>
-</body>
+
+    </div>
+
+</main>
+
 
 <?php include('../layouts/footer.php') ?>
