@@ -1,20 +1,19 @@
 <?php
+    session_start();
     include('../layouts/head.php');
 
-    if(isset($_POST)) {
+    $errors = [];
 
-        $errors = [];
-
-        if (empty($_POST['name'])){
-            $errors['name'] ="Vous avez oublié votre nom";
-        }
-        if (empty($_POST['email'])){
-            $errors['email'] ="Vous avez oublié votre email";
-        }
-        if (empty($_POST['message'])){
-            $errors['message'] ="Vous avez oublié votre message";
-        }
+    if (empty($_POST['name'])){
+        $errors['name'] ="Ce champ est obligatoire";
     }
+    if (empty($_POST['email'])){
+        $errors['email'] ="Ce champ est obligatoire";
+    }
+    if (empty($_POST['message'])){
+        $errors['message'] ="Ce champ est obligatoire";
+    }
+
 ?>
 
 <main class="contact-background">
@@ -38,7 +37,7 @@
                 </li>
 
                 <li>
-                    <label for="input_name" >Nom *</label>
+                    <label for="input_name" >Nom</label>
                     <input type="text" name="name" maxlength="100" id="input_name" value=<?php if(isset($_POST['name'])) echo $_POST['name']?>>
                     <p class="errors">
                         <code>
@@ -48,7 +47,7 @@
                 </li>
 
                 <li>
-                    <label for="input_email">Email *</label>
+                    <label for="input_email">Email</label>
                     <input type="email" name="email" maxlength="100" id="input_email" value=<?php if(isset($_POST['email'])) echo $_POST['email']?>>
                     <p class="errors">
                         <code>
@@ -58,7 +57,7 @@
                 </li>
 
                 <li>
-                    <label for="text_message">Message *</label required>
+                    <label for="text_message">Message</label required>
                     <textarea name="message" onkeyup="adjust_textarea(this)" id="text_message"><?php if(isset($_POST['message'])) echo $_POST['message']?></textarea>
                     <p class="errors">
                         <code>

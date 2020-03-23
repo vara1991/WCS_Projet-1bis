@@ -1,4 +1,7 @@
-<?php include('../layouts/head.php') ?>
+<?php
+    session_start();
+    include('../layouts/head.php');
+?>
 
 <main>
 

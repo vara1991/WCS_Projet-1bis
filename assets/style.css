@@ -7,6 +7,10 @@
 
 /* header */
 
+header{
+    width: 100%;
+    background-color: #86A69D;
+}
 .navbar{
     display:flex;
     justify-content: space-around;
@@ -42,12 +46,23 @@
 
 .big_title {
     text-align: center;
-    background-color: #86A69D;
     color: white;
     font-family: "Amatic SC", sans-serif;
     font-size: 90px;
-    padding: 1em;
+    padding-top: 6rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
 }
+
+.déconnection{
+    padding: 2rem;
+}
+
+.déconnection form{
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (max-width:760px) {
 
     .navbar{
@@ -426,8 +441,9 @@ hr {
 
 .contact-background{
     min-height: 100vh;
-    width: 100%;
+    width: 95.8%;
     margin: 0;
+    padding: 2rem;
     background-color: rgb(255,255,255,0.6);
     background-image: url(https://images.pexels.com/photos/569098/pexels-photo-569098.jpeg?cs=srgb&dl=analogique-appareil-photo-classique-concentrer-569098.jpg&fm=jpg);
     background-repeat: no-repeat;
@@ -543,7 +559,42 @@ hr {
     text-align: center;
 }
 
-    /*footer*/
+/*connection*/
+
+.login{
+    display: flex;
+    justify-content: center;
+    background-color: #86A69D;
+}
+
+.login-field{
+    height: 20rem;
+    width: 30rem;
+    margin: 2rem;
+    margin-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
+}
+
+.login-field label,
+.login-field input{
+    width: 20rem;
+    padding: 0.5rem;
+    margin: 1px;
+
+}
+
+.login-field button{
+    width: 10rem;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+
+/*footer*/
 
 footer {
     background-color:#86A69D;

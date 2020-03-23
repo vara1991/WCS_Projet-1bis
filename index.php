@@ -1,4 +1,13 @@
-<?php include('layouts/head.php') ?>
+<?php
+    session_start();
+    include('layouts/head.php');
+    include('controller/controller.php');
+
+    // LOGOUT
+    if(isset($_POST['déconnection'])){
+        getUserLogout();
+    }
+    ?>
 
 <main>
 
