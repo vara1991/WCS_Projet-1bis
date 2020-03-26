@@ -3,23 +3,31 @@
     include('../layouts/head.php');
     include('../controller/controller.php');
 
-    $error = [];
+    if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['connecter'])){
 
-    if (empty($_POST['pseudo'])) {
-        $error['pseudo'] = "Ce champ est obligatoire";
-    }
-    if (empty($_POST['pass'])) {
-        $error['pass'] = "Ce champ est obligatoire";
-    } else {
-        getLoginAuth($_POST);
-    }
+        $error = [];
 
+        if(empty($_POST['pseudo'])) {
+            $error['pseudo'] = "Vous avez oublié votre pseudo";
+        }
+
+        if(empty($_POST['pass'])){
+            $error['pass'] = "Vous avez oublié votre mot de passe";
+        }
+
+        if(isset($_POST['pass']) && $_POST['pass'] != '1'){
+            $error['pass1'] = "Entrer 1 !";
+        } else {
+            getLoginAuth($_POST);
+        }
+
+    }
 
 ?>
 
     <main class="login">
 
-        <form method="POST">
+        <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <fieldset class="login-field">
                 <label for="pseudo" >Pseudo</label>
                 <input type="text" name="pseudo" id="pseudo" value=<?php if(isset($_POST['pseudo'])) echo $_POST['pseudo']?>>
@@ -35,8 +43,8 @@
                         <?php
                         if(isset($error['pass'])){
                             echo $error['pass'];
-                        } else {
-                            echo "Entrer 1";
+                        }elseif(isset($error['pass1'])){
+                            echo $error['pass1'];
                         }
                         ?>
                     </code>

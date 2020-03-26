@@ -2,18 +2,20 @@
     session_start();
     include('../layouts/head.php');
 
-    $errors = [];
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoyer'])){
 
-    if (empty($_POST['name'])){
-        $errors['name'] ="Ce champ est obligatoire";
-    }
-    if (empty($_POST['email'])){
-        $errors['email'] ="Ce champ est obligatoire";
-    }
-    if (empty($_POST['message'])){
-        $errors['message'] ="Ce champ est obligatoire";
-    }
+        $errors = [];
 
+        if (empty($_POST['name'])) {
+            $errors['name'] = "Vous avez oublié votre nom";
+        }
+        if (empty($_POST['email'])) {
+            $errors['email'] = "Vous avez oublié votre prénom";
+        }
+        if (empty($_POST['message'])) {
+            $errors['message'] = "Vous avez oublié votre message";
+        }
+    }
 ?>
 
 <main class="contact-background">
@@ -24,7 +26,7 @@
 
         <div class="table">
 
-            <form class="form-style-7" action="contact.php" method="POST">
+            <form class="form-style-7" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 
             <ul>
 
@@ -75,7 +77,7 @@
             </form>
 
             <?php
-                if(isset($_POST['envoyer'])) {
+                if(isset($_POST['envoyer']) && empty($errors)) {
             ?>
                 <div class="message_envoie">
                     <p>Roquet Racoon vous remercie</p>

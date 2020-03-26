@@ -19,7 +19,7 @@
             <nav>
                 <ul class="navbar">
                     <?php
-                    if (empty($_SESSION['isConnected']) && empty($_SESSION['username'])) { ?>
+                    if (empty($_SESSION['isConnected']) && empty($_SESSION['speudo'])) { ?>
                         <li><a href="../index.php">A propos</a></li>
                         <li><a href="../pages/contact.php">Contact</a></li>
                         <li><a href="../pages/connection.php">Connection</a></li>
@@ -29,7 +29,7 @@
                         <li><a href="../pages/portfolio.php">Portfolio</a></li>
                         <li><a href="../pages/article.php">Article</a></li>
                         <li><a href="../pages/contact.php">Contact</a></li>
-                        <li><a href="../pages/connection.php">Connection</a></li>
+
                     <?php } ?>
                 </ul>
 
