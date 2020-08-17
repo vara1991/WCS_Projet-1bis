@@ -1,6 +1,7 @@
 <?php
     session_start();
     include('../layouts/head.php');
+    include('../controller/controller.php');
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['envoyer'])){
 
@@ -10,10 +11,12 @@
             $errors['name'] = "Vous avez oublié votre nom";
         }
         if (empty($_POST['email'])) {
-            $errors['email'] = "Vous avez oublié votre prénom";
+            $errors['email'] = "Vous avez oublié votre email";
         }
         if (empty($_POST['message'])) {
             $errors['message'] = "Vous avez oublié votre message";
+        }else {
+            sendMail($_POST);
         }
     }
 ?>
@@ -84,12 +87,6 @@
                     <p><?php echo $_POST['name'];?></p>
                     <p>pour votre message</p>
                 </div>
-
-                <?php
-                    $messageEnvoi = $_POST['message'];
-                    $headers = 'From : v.gaire@hotmail.fr';
-                    mail('varaponegaire@gmail.com', 'formulaire de contact', $messageEnvoi, $headers);
-                ?>
 
              <?php
                 }

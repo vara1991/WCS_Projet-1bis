@@ -25,19 +25,20 @@
 
 ?>
 
+    <hr class="hr-login">
     <main class="login">
 
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <fieldset class="login-field">
                 <label for="pseudo" >Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo" value=<?php if(isset($_POST['pseudo'])) echo $_POST['pseudo']?>>
+                <input type="text" name="pseudo" id="pseudo" value=<?php if(!empty($_POST['pseudo'])) echo $_POST['pseudo']?>>
                 <p class="errors">
                     <code>
                         <?php if(isset($error['pseudo'])) echo $error['pseudo']; ?>
                     </code>
                 </p>
                 <label for="pass">Mot de passe : 1</label>
-                <input type="password" name="pass" id="pass">
+                <input type="password" name="pass" id="pass" value=<?php if(!empty($_POST['pass']) && $_POST['pass'] == 1) echo $_POST['pass']?>>
                 <p class="errors">
                     <code>
                         <?php
@@ -54,8 +55,6 @@
         </form>
 
     </main>
+    <hr class="hr-login">
 
-</body>
-
-</html>
-
+<?php include('../layouts/footer.php') ?>
