@@ -569,6 +569,7 @@ hr {
     display: flex;
     justify-content: center;
     background-color: #86A69D;
+    min-height: calc(100vh - 600px);
 }
 
 .login-field{
